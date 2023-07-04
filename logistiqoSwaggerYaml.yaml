@@ -1,0 +1,1733 @@
+openapi: 3.0.1
+info:
+  title: LogistiqoAPI
+  version: '1.0'
+  description: >-
+  
+    JSON File  [Download Json file](https://support.logistiqo.com/swagger/logistiqoSwagger.json)
+    
+    
+    
+    
+    YAML File  [Download YAML file](https://support.logistiqo.com/swagger/logistiqoSwaggerYaml.yaml)
+  
+  
+  
+    An API, or Application Programming Interface, is a set of protocols,
+    routines, and tools that enable different software applications to
+    communicate and exchange data with each other. It defines how software
+    components should interact and helps to simplify software development by
+    abstracting the underlying implementation. APIs are essential for building
+    complex and interconnected software systems.
+    
+     ## Contact Us
+
+
+    If you have problems or questions, please read the following information:
+
+
+    - [FAQ](https://www.logistiqo.com/faq/)
+
+    - [Contact us](https://www.logistiqo.com/contact.php)
+
+
+    To stay informed about the latest developments, you can
+
+
+    - Follow us on [Twitter](https://twitter.com/logistiqo/),
+
+    
+    
+     # Instructions
+
+
+    
+
+    Instructions instructions  instructions  instructions  instructions  instructions  instructions  instructions  instructions  instructions  instructions  instructions  instructions  instructions  instructions  instructions  instructions  instructions  instructions  instructions  instructions:
+
+  
+    
+  contact:
+    email: info@logistiqo.com
+    url: https://www.logistiqo.com/
+servers:
+  - url: https://demo.logistiqo.com
+paths:
+  /logistiqo/api/shipment-list:
+    get:
+      summary: GetShipmentListEndpoint
+      operationId: getShipmentList
+      description: >
+      
+          # Shipment
+
+
+            Shipment description shipment description shipment description shipment description shipment description shipment  description shipment description shipment description shipment description shipment description shipment  description shipment description shipment description. 
+     
+             
+           For example:
+          ```json
+
+            {
+             "Shipment-list":
+                     idshipment: 0
+                     shipmentnummer: string
+                     customerreference: string
+                     internalreference: string
+                     contract: string
+                     customername: string
+                     customeraddress: string
+                     customerzipcode: string
+                     customercity: string
+                     sendername: string
+                     senderaddress: string
+                     senderzipcode: string
+                     sendercity: string
+                     receivername: string
+                     receiveraddress: string
+                     receiverzipcode: string
+                     receivercity: string
+                     collecton: string
+                     deliveryon: string
+                     vehicle: string
+                     vehicletype: string
+                     driver: string
+                     subcontractor: string
+                     debtorsaccount: string
+                     creditorsaccount: string
+                     service: string
+                     goods: string
+                     unit: string
+                     quantity: 0
+                     weight: 0
+                     netamount: 0
+                     cost: 0
+                     grossprofit: 0
+                     distance: 0
+                     shipmenttype: string
+                     verified: true
+                     status: string
+                     createdon: string
+                     createdby: string
+                     modifiedon: string
+                     modifiedby: string
+                     statusmodifiedon: string
+                     statusnodes:
+                      - reference: '541641'
+                        idShipment: 61664
+                        shipmentNumber: 23 00050
+                        customerReference: '07049162454161'
+                        statusId: 1
+                        status: POD
+                        statusDescription: At Gate Pickup
+                        description: Freight papers are missing
+                        user: r.sterling@universalexport.net
+                        timeStamp: 23-03-2023 19:01
+                        lat: 90
+                        lng: 180
+                  
+            }
+
+             ```
+      tags:
+        - Shipment Table
+      parameters:
+        - name: shipment
+          in: query
+          description: >-
+            select one single shipment no, if not used all shipments will be
+            returned
+          required: false
+          schema:
+            type: string
+            default: ''
+        - name: reference
+          in: query
+          description: >-
+            select one single customer reference, if not used all shipments will
+            be returned
+          schema:
+            type: string
+            default: ''
+        - name: year
+          in: query
+          description: filter on created in year use format yyyy
+          required: false
+          schema:
+            type: string
+            default: '2023'
+        - name: month
+          in: query
+          description: filter on created in month, use format MM, can be combined with year
+          required: false
+          schema:
+            type: string
+            default: '11'
+        - name: createdOn
+          in: query
+          description: filter on created on date, use format dd.MM.yyyy
+          required: false
+          schema:
+            type: string
+            default: ''
+        - name: modifiedOn
+          in: query
+          description: >-
+            filter on current date greater than modified on date, use format
+            dd.MM.yyyy
+          required: false
+          schema:
+            type: string
+            default: ''
+        - name: statusModifiedOn
+          in: query
+          description: >-
+            filter on current date greater than status modified on date, use
+            format dd.MM.yyyy
+          required: false
+          schema:
+            type: string
+            default: ''
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShipmentListResponse'
+  /logistiqo/rest/manifest/json:
+    post:
+      summary: postManifestEndpoint
+      operationId: postManifest
+      description: >
+      
+         # Manifest
+
+
+         Manifest description manifest description manifest description manifest description manifest description manifest description manifest description manifest description manifest description manifest description manifest description manifest description manifest description. 
+     
+     
+          For example:
+         ```json
+
+
+         {
+          Manifest:
+              createManifest: false
+              reference: '23672'
+              description: string
+              hawb: string
+              mawb: 180-39408331
+              airline: Korean Air Lines
+              date: 12.06.2023
+              dateto: dd.MM.yyyy HH.mm or dd.MM.yyyy
+              depot: HUB01
+              subcontractor:
+                id: null
+                number: 102
+                companyType: 3
+                code: RSTERLING
+                edifactId: null
+                networkId: null
+                vatId: DE64987444
+                address:
+                  id: null
+                  number: string
+                  idAddress: 0
+                  city: London
+                  countryCode: GB
+                  email: r.sterling@universalexport.net
+                  greeting: Mr.
+                  title: Dr.
+                  firstName: Robert
+                  houseNo: '413'
+                  lastName: Sterling
+                  name: Universal Exports
+                  name2: Limited
+                  phone: +44 207 946 0139
+                  mobile: +44 207 946 0139
+                  street: 413 Longstream Road
+                  addressrow: Unit 1D, Lock 71
+                  zipcode: SE1 7TP
+                  state: Bayern
+                  plantNumber: string
+                  instructions: string
+                  openingHoursMonToThuFrom: 0
+                  openingHoursMonToThuTo: 0
+                  openingHoursFriFrom: 0
+                  openingHoursFriTo: 0
+                  idTimeslot: 0
+                  withDurationGrid: false
+                  idDuration: 0
+                  temporary: false
+              action: SCAN_IN
+              flightNo: KE946
+              shipper:
+                id: null
+                number: string
+                idAddress: 0
+                city: London
+                countryCode: GB
+                email: r.sterling@universalexport.net
+                greeting: Mr.
+                title: Dr.
+                firstName: Robert
+                houseNo: '413'
+                lastName: Sterling
+                name: Universal Exports
+                name2: Limited
+                phone: +44 207 946 0139
+                mobile: +44 207 946 0139
+                street: 413 Longstream Road
+                addressrow: Unit 1D, Lock 71
+                zipcode: SE1 7TP
+                state: Bayern
+                plantNumber: string
+                instructions: string
+                openingHoursMonToThuFrom: 0
+                openingHoursMonToThuTo: 0
+                openingHoursFriFrom: 0
+                openingHoursFriTo: 0
+                idTimeslot: 0
+                withDurationGrid: false
+                idDuration: 0
+                temporary: false
+              consignee:
+                id: null
+                number: string
+                idAddress: 0
+                city: London
+                countryCode: GB
+                email: r.sterling@universalexport.net
+                greeting: Mr.
+                title: Dr.
+                firstName: Robert
+                houseNo: '413'
+                lastName: Sterling
+                name: Universal Exports
+                name2: Limited
+                phone: +44 207 946 0139
+                mobile: +44 207 946 0139
+                street: 413 Longstream Road
+                addressrow: Unit 1D, Lock 71
+                zipcode: SE1 7TP
+                state: Bayern
+                plantNumber: string
+                instructions: string
+                openingHoursMonToThuFrom: 0
+                openingHoursMonToThuTo: 0
+                openingHoursFriFrom: 0
+                openingHoursFriTo: 0
+                idTimeslot: 0
+                withDurationGrid: false
+                idDuration: 0
+                temporary: false
+              error: false
+              shipments:
+                - idCustomer: 0
+                  networkId: 0
+                  edifactId: string
+                  customerNumber: string
+                  customerReference: string
+                  internalReference: ''
+                  shipmentType: DIRECT
+                  paymentTerms:
+                    cashDiscountDays: 0
+                    days: 0
+                    longName: string
+                    shortName: string
+                    cashDiscount: 0
+                  branch: string
+                  description: string
+                  dropofByCompany: string
+                  dropofByVehicle: string
+                  ownCompanyCode: string
+                  idScanningConfig: 1
+                  plantNumber: string
+                  callOffNumber: string
+                  callOffDate: string
+                  callOffArticle: string
+                  callOffCumulativeQuantity: string
+                  callOffLastDeliveryDate: string
+                  callOffLastDeliveryNote: string
+                  unloadingPoint: string
+                  customerMark: string
+                  scannedBy: string
+                  return: true
+                  returnExchange: true
+                  idCustomerContact: 0
+                  idContract: 0
+                  idStockStatus: 0
+                  customer:
+                    id: null
+                    number: 102
+                    companyType: 3
+                    code: RSTERLING
+                    edifactId: null
+                    networkId: null
+                    vatId: DE64987444
+                    address:
+                      id: null
+                      number: string
+                      idAddress: 0
+                      city: London
+                      countryCode: GB
+                      email: r.sterling@universalexport.net
+                      greeting: Mr.
+                      title: Dr.
+                      firstName: Robert
+                      houseNo: '413'
+                      lastName: Sterling
+                      name: Universal Exports
+                      name2: Limited
+                      phone: +44 207 946 0139
+                      mobile: +44 207 946 0139
+                      street: 413 Longstream Road
+                      addressrow: Unit 1D, Lock 71
+                      zipcode: SE1 7TP
+                      state: Bayern
+                      plantNumber: string
+                      instructions: string
+                      openingHoursMonToThuFrom: 0
+                      openingHoursMonToThuTo: 0
+                      openingHoursFriFrom: 0
+                      openingHoursFriTo: 0
+                      idTimeslot: 0
+                      withDurationGrid: false
+                      idDuration: 0
+                      temporary: false
+                  invoiceReceiver:
+                    id: null
+                    number: 102
+                    companyType: 3
+                    code: RSTERLING
+                    edifactId: null
+                    networkId: null
+                    vatId: DE64987444
+                    address:
+                      id: null
+                      number: string
+                      idAddress: 0
+                      city: London
+                      countryCode: GB
+                      email: r.sterling@universalexport.net
+                      greeting: Mr.
+                      title: Dr.
+                      firstName: Robert
+                      houseNo: '413'
+                      lastName: Sterling
+                      name: Universal Exports
+                      name2: Limited
+                      phone: +44 207 946 0139
+                      mobile: +44 207 946 0139
+                      street: 413 Longstream Road
+                      addressrow: Unit 1D, Lock 71
+                      zipcode: SE1 7TP
+                      state: Bayern
+                      plantNumber: string
+                      instructions: string
+                      openingHoursMonToThuFrom: 0
+                      openingHoursMonToThuTo: 0
+                      openingHoursFriFrom: 0
+                      openingHoursFriTo: 0
+                      idTimeslot: 0
+                      withDurationGrid: false
+                      idDuration: 0
+                      temporary: false
+                  details:
+                    - type: SENDER
+                      instructions: string
+                      address:
+                        id: null
+                        number: string
+                        idAddress: 0
+                        city: London
+                        countryCode: GB
+                        email: r.sterling@universalexport.net
+                        greeting: Mr.
+                        title: Dr.
+                        firstName: Robert
+                        houseNo: '413'
+                        lastName: Sterling
+                        name: Universal Exports
+                        name2: Limited
+                        phone: +44 207 946 0139
+                        mobile: +44 207 946 0139
+                        street: 413 Longstream Road
+                        addressrow: Unit 1D, Lock 71
+                        zipcode: SE1 7TP
+                        state: Bayern
+                        plantNumber: string
+                        instructions: string
+                        openingHoursMonToThuFrom: 0
+                        openingHoursMonToThuTo: 0
+                        openingHoursFriFrom: 0
+                        openingHoursFriTo: 0
+                        idTimeslot: 0
+                        withDurationGrid: false
+                        idDuration: 0
+                        temporary: false
+                      dateType: 1
+                      dateFrom: 12.06.2023 10:00
+                      dateTo: 12.06.2023 15:00
+                      dateFrom2: dd.MM.yyyy HH.mm
+                      dateTo2: dd.MM.yyyy HH.mm
+                      fixedTime: false
+                      notification: false
+                  goodss: []
+                  notifiedGoodss: []
+                  calloffs: []
+                  uploadedFiles: []
+                  services: []
+         }
+
+            ```
+      tags:
+        - Manifest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Manifest'
+      responses:
+        '201':
+          description: The shipment was created successfully
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+  /shipments/{id}:
+    get:
+      summary: Get a shipment by ID
+      operationId: getShipment
+      description: >
+      
+         # Shipment
+
+
+         Shipment description shipment description shipment description shipment description shipment description shipment description shipment description shipment description shipment description shipment description shipment description shipment description shipment description. 
+     
+           For example:
+         ```json
+         
+
+         {
+           Shipment:
+            reference: '541641'
+            idShipment: 61664
+            shipmentNumber: 23 00050
+            customerReference: '07049162454161'
+            statusId: 1
+            status: POD
+            statusDescription: At Gate Pickup
+            description: Freight papers are missing
+            user: r.sterling@universalexport.net
+            timeStamp: 23-03-2023 19:01
+            lat: 90
+            lng: 180
+          }
+          ```
+          
+      tags:
+        - Shipment
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: The ID of the shipment to get.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+        '404':
+          description: Not Found
+  /status:
+    post:
+       summary: postStatusEndpoint
+       operationId: postStatus
+       description: >
+        
+     
+         # Status
+
+
+         Status description status description status description status description status description status description status description status description status description status description status description status description status description. 
+     
+            For example:
+
+    
+         ```json
+
+         {
+         
+         Status:
+          - reference: '541641'
+            idShipment: 61664
+            shipmentNumber: 23 00050
+            customerReference: '07049162454161'
+            statusId: 1
+            status: POD
+            statusDescription: At Gate Pickup
+            description: Freight papers are missing
+            user: r.sterling@universalexport.net
+            timeStamp: 23-03-2023 19:01
+            lat: 90
+            lng: 180
+          }
+         ```
+         
+       tags:
+        - Status
+       requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Status'
+       responses:
+        '200':
+          description: Successfully added status.
+        '400':
+          description: Invalid input.
+          
+  /companies:
+   post:
+       summary: postCompaniesEndpoint
+       operationId: postCompanies
+       description: >
+         
+         # Companies
+
+
+           Companies description companies description companies description companies description companiesdescription companies description companies description companies description companies description companies description companies description companies description companies description. 
+     
+           For example:
+    
+         ```json
+
+         {
+         
+         Companies:
+                id: null
+                number: 102
+                companyType: 3
+                code: RSTERLING
+                edifactId: null
+                networkId: null
+                vatId: DE64987444
+                address:
+                  id: null
+                  number: string
+                  idAddress: 0
+                  city: London
+                  countryCode: GB
+                  email: r.sterling@universalexport.net
+                  greeting: Mr.
+                  title: Dr.
+                  firstName: Robert
+                  houseNo: '413'
+                  lastName: Sterling
+                  name: Universal Exports
+                  name2: Limited
+                  phone: +44 207 946 0139
+                  mobile: +44 207 946 0139
+                  street: 413 Longstream Road
+                  addressrow: Unit 1D, Lock 71
+                  zipcode: SE1 7TP
+                  state: Bayern
+                  plantNumber: string
+                  instructions: string
+                  openingHoursMonToThuFrom: 0
+                  openingHoursMonToThuTo: 0
+                  openingHoursFriFrom: 0
+                  openingHoursFriTo: 0
+                  idTimeslot: 0
+                  withDurationGrid: false
+                  idDuration: 0
+                  temporary: false
+              
+          }
+
+            ```
+       tags:
+        - Companies
+       requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Companies'
+       responses:
+        '200':
+          description: Successfully added Companies.
+        '400':
+          description: Invalid input.
+
+  /scanIn:
+    post:
+       summary: postWarehouseEndpoint
+       operationId: postWarehouse
+       description: >
+       
+           # Warehouse
+  
+  
+             Warehouse description warehouse description warehouse description warehouse description warehouse warehouse description warehouse description warehouse description warehouse description warehouse description warehouse description warehouse description warehouse description. 
+       
+             For example:
+      
+           ```json
+  
+            {
+            Warehouse:
+                    id: 0
+                    barcode: string
+                    customerref: string
+                    manifestref: string
+                    reference: string
+                    storage: string
+                    loadcarrier: string
+                    constructionindex: string
+                    serialnumber: string
+                    quantity: 0
+                    slc: 0
+                    llc: 0
+                    qpu: 0
+                    unit: string
+                    action: string
+                    barcodetype: string
+                    createnew: true
+                    deleted: true
+                    complete: true
+                    changestatus: true
+                    scannedby: string
+                    scannedinon: string
+               
+            }
+  
+              ```
+       tags:
+        - Warehouse
+       requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Barcode'
+       responses:
+        '200':
+          description: Successfully added barcode.
+        '400':
+          description: Invalid input.
+components:
+  schemas:
+    ShipmentListResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/ShipmentList'
+    ShipmentList:
+      type: object
+      properties:
+        idshipment:
+          type: integer
+          nullable: true
+        shipmentnummer:
+            type: string
+            nullable: true
+        customerreference:
+          type: string
+          nullable: true
+        internalreference:
+          type: string
+          nullable: true
+        contract:
+          type: string
+          nullable: true
+        customername:
+          type: string
+          nullable: true
+        customeraddress:
+          type: string
+          nullable: true
+        customerzipcode:
+          type: string
+          nullable: true
+        customercity:
+          type: string
+          nullable: true
+        sendername:
+          type: string
+          nullable: true
+        senderaddress:
+          type: string
+          nullable: true
+        senderzipcode:
+          type: string
+          nullable: true
+        sendercity:
+          type: string
+          nullable: true
+        receivername:
+          type: string
+          nullable: true
+        receiveraddress:
+          type: string
+          nullable: true
+        receiverzipcode:
+          type: string
+          nullable: true
+        receivercity:
+          type: string
+          nullable: true
+        collecton:
+          type: string
+          nullable: true
+        deliveryon:
+          type: string
+          nullable: true
+        vehicle:
+          type: string
+          nullable: true
+        vehicletype:
+          type: string
+          nullable: true
+        driver:
+          type: string
+          nullable: true
+        subcontractor:
+          type: string
+          nullable: true
+        debtorsaccount:
+          type: string
+          nullable: true
+        creditorsaccount:
+          type: string
+          nullable: true
+        service:
+          type: string
+          nullable: true
+        goods:
+          type: string
+          nullable: true
+        unit:
+          type: string
+          nullable: true
+        quantity:
+          type: integer
+          nullable: true
+        weight:
+          type: number
+          format: double
+        netamount:
+          type: number
+          format: double
+        cost:
+          type: number
+          format: double
+        grossprofit:
+          type: number
+          format: double
+        distance:
+          type: integer
+          nullable: true
+        shipmenttype:
+          type: string
+          nullable: true
+        verified:
+          type: boolean
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        createdon:
+          type: string
+          nullable: true
+        createdby:
+          type: string
+          nullable: true
+        modifiedon:
+          type: string
+          nullable: true
+        modifiedby:
+          type: string
+          nullable: true
+        statusmodifiedon:
+          type: string
+          nullable: true
+        statusnodes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Status'
+    Companies:
+      type: array
+      items:
+         $ref: '#/components/schemas/CompanyObject'
+    AddressObject:
+      type: object
+      properties:
+          id:
+            type: integer
+            example: 
+          number:
+            type: string
+            description: >-
+              If you have the address number available in Logistiqo, please enter it in this field. In that case, no other address fields are required. However, if the address number not known or the address is new, please make sure to fill out all the other necessary address fields
+          idAddress: 
+            type: integer
+            default: 0
+            description: >-
+              This field contains the ID of the address within the Logistiqo Application. It is exclusively utilized by Logistiqo's internal functions.
+          city:
+            type: string
+            example: London
+          countryCode:
+            type: string
+            example: GB
+            description: >-
+              Please enter the two-letter country code according to the ISO  3166-1 alpha-2 standard. These codes are internationally recognized and defined by the International Organization for Standardization as part of the ISO 3166 standard.
+          email:
+            type: string
+            example: r.sterling@universalexport.net
+          greeting:
+            type: string
+            example: Mr.
+          title:
+            type: string
+            example: Dr.
+          firstName:
+            type: string
+            example: Robert
+          houseNo:
+            type: string
+            example: '413'
+          lastName:
+            type: string
+            example: Sterling
+          name:
+            type: string
+            example: Universal Exports
+          name2:
+            type: string
+            example: Limited
+          phone:
+            type: string
+            example: +44 207 946 0139
+          mobile:
+            type: string
+            example: +44 207 946 0139
+          street:
+            type: string
+            example: 413 Longstream Road
+          addressrow:
+            type: string
+            example: 'Unit 1D, Lock 71'
+          zipcode:
+            type: string
+            example: 'SE1 7TP'
+          state:
+            type: string
+            example: Bayern
+          plantNumber:
+            type: string
+            description: Internal field
+          instructions:
+            type: string
+          openingHoursMonToThuFrom:
+            type: integer
+            description: >-
+              open as of in minutes from start of day on monday to thursday
+          openingHoursMonToThuTo:
+            type: integer
+            description: >-
+              close as of in minutes from start of day on monday to thursday
+          openingHoursFriFrom:
+            type: integer
+            description: >-
+              open as of in minutes from start of day on friday
+          openingHoursFriTo:
+            type: integer
+            description: >-
+              close as of in minutes from start of day on friday
+          idTimeslot:
+            type: integer
+            description: Internal field
+          withDurationGrid:
+            type: boolean
+            default: false
+            description: Internal field
+          idDuration:
+            type: integer
+            description: Internal field
+          temporary:
+            type: boolean
+            default: false
+            example: false
+    CompanyObject:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 
+        number:
+          type: integer
+          example: 102
+          description: >-
+            If you have the company number available in Logistiqo, please enter it in this field. In that case, no other company or address fields are required. However, if the company number not known or the company is new, please make sure to fill out all the other necessary company and address fields
+        companyType:
+          type: integer
+          example: 3
+          description: >-
+            1 = company, 3 = customer, 4 = subcontractor
+        code:
+          type: string
+          example: RSTERLING
+        edifactId:
+          type: string
+          example: null
+        networkId:
+          type: integer
+          example: null
+        vatId:
+          type: string
+          example: DE64987444
+        address:
+          type: object
+          allOf:
+          -   $ref: '#/components/schemas/AddressObject'
+    PaymentTerms:
+      type: object
+      properties:
+        cashDiscountDays:
+          type: integer
+        days:
+          type: integer
+        longName:
+          type: string
+        shortName: 
+          type: string
+        cashDiscount:
+          type: number
+          format: double
+    Manifest:
+      type: object
+      properties:
+        createManifest:
+          type: boolean
+          default: false
+          description: >-
+            If you specifically want to create shipments without a manifest, please keep the field at its default value "false". However, if you require a manifest that includes all shipments, please set the field to "true".
+        reference:
+          type: string
+          example: 023672
+          description: >-
+            This field can contain either a unique random string or a unique ID, which is used to prevent the generation of duplicate manifests
+        description:
+          type: string
+          description: >-
+            This field can contain e free text describing the manifest
+        hawb:
+          type: string
+          description: >-
+            If this manifest represents a House Air Waybill, please enter the House Waybill number in the field using a free format.
+        mawb:
+          type: string
+          example: 180-39408331
+          description: >-
+            If this manifest represents a Master Air Waybill, the field should contain a valid Master Air Waybill number in the format 123-12345678.
+        airline:
+          type: string
+          example: Korean Air Lines
+          description: >-
+            If this manifest represents a Master Air Waybill, the field should contain the name of the first carrier.
+        date:
+          type: string
+          example: 12.06.2023
+          default: current date
+          description: >-
+            Please indicate the desired start date in the format dd.MM.yyyy HH.mm or dd.MM.yyyy, and optionally the time, for the execution of this manifest.
+        dateto:
+          type: string
+          example: dd.MM.yyyy HH.mm or dd.MM.yyyy
+          default: date
+          description: >-
+            Please provide the desired completion date in the format dd.MM.yyyy HH.mm or dd.MM.yyyy, and optionally the time, for the execution of this manifest.
+        depot:
+          type: string
+          example: HUB01
+          default: DEPOT
+          x-visibility: hidden
+          description: >-
+            Please provide the desired depot for the execution of this manifest.
+        subcontractor:
+          type: object
+          allOf:
+            - $ref: '#/components/schemas/CompanyObject'
+          description: >-
+            If this manifest represents a Contract of Carriage, please enter the Logistiqo-specified company code of the subcontractor responsible for carrying out the transportation.
+        action:
+          type: string
+          example: SCAN_IN
+          description: >-
+            This field is solely utilized when the manifest includes warehouse issues, warehouse receipts, or relocation shipments. In such scenarios, the acceptable values are limited to SCAN_IN, SCAN_OUT, and SCAN_RELOCATE.
+        flightNo:
+          type: string
+          example: KE946
+          description: If this manifest represents a Master Air Waybill, please enter the Flight Number in the corresponding field.
+        shipper:
+          type: object
+          allOf:
+            - $ref: '#/components/schemas/AddressObject'
+        consignee :
+          type: object
+          allOf:
+            - $ref: '#/components/schemas/AddressObject'
+        error:
+          type: boolean
+          example: false
+          description: >-
+            This field signifies the presence of errors in the Manifest.
+        shipments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Shipment'
+    Shipment:
+      type: object
+      properties:
+        idCustomer:
+          type: integer
+          description: >-
+            Internal field, This field is exclusively utilized for internal purposes within the Logistiqo application.
+        networkId:
+          type: integer
+          description: >-
+            Internal field, this field is exclusively utilized for internal purposes within the Logistiqo application for exchange of shipments between Logistiqo Domains. The networkId is the common id of the Customer within the Network of different logistiqo domains 
+        edifactId:
+          type: string
+          description: >-
+            Internal field, This field is exclusively utilized for internal purposes within the Logistiqo application.
+        customerNumber:
+          type: string
+          description: >-
+            Please be aware that this field is mandatory and should include a unique customer number that is registered in the Logistiqo system. If the customerNumber is left empty, please provide  all the necessary company and address fields in the field customer.
+        customerReference:
+          type: string
+          description: >-
+            Please ensure that this required field contains a unique customer reference, which is typically the customer's order number. This information is crucial for proper order processing and fulfillment.
+        internalReference:
+          type: string
+          example: ''
+        shipmentType:
+          type: string
+          example: DIRECT
+          description: >-
+            Please specify the shipment type according to the options defined in the Logistiqo application, such as IMPORT, EXPORT, DEPOT, or SAMMEL.
+        paymentTerms:
+          type: object
+          description: >-
+            This field should only be used if the payment term for this shipment differs from the customer's default payment term as defined in the Logistiqo application.
+          allOf:
+            - $ref: '#/components/schemas/PaymentTerms'
+        branch:
+          type: string
+          description: >-
+            free text
+        description:
+          type: string
+          description: >-
+            free text
+        dropofByCompany:
+          type: string
+        dropofByVehicle:
+          type: string
+        ownCompanyCode:
+          type: string
+          description: >-
+            Internal field
+        idScanningConfig:
+          type: integer
+          example: 1
+          default: 1
+          description: Internal field
+        plantNumber:
+          type: string
+          description: >-
+            Internal field
+        callOffNumber:
+          type: string
+          description: >-
+            Internal field
+        callOffDate:
+          description: >-
+            Internal field
+          type: string
+        callOffArticle:
+          type: string
+          description: >-
+            Internal field
+        callOffCumulativeQuantity:
+          type: string
+          description: >-
+            Internal field
+        callOffLastDeliveryDate:
+          type: string
+          description: >-
+            Internal field
+        callOffLastDeliveryNote:
+          type: string
+          description: >-
+            Internal field
+        unloadingPoint:
+          type: string
+          description: >-
+            Internal field
+        customerMark:
+          type: string
+          description: >-
+            Internal field
+        scannedBy:
+          type: string
+          description: >-
+            Internal field
+        return:
+          type: boolean
+          description: >-
+            Indicatates that this is a return shipment
+        returnExchange:
+          type: boolean
+          description: >-
+            Indicatates that this is a return of loading device shipment
+        idCustomerContact:
+          type: integer
+          description: Internal field
+        idContract:
+           type: integer
+           default: 0
+           description: Internal field
+        idStockStatus:
+          type: integer
+          default: 0
+          description: Internal field
+        customer:
+          type: object
+          allOf:
+            - $ref: '#/components/schemas/CompanyObject'
+        invoiceReceiver:
+          type: object
+          allOf:
+            - $ref: '#/components/schemas/CompanyObject'
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/Detail'
+        goodss:
+          type: array
+          default: []
+          items:
+            $ref: '#/components/schemas/Goods'
+        notifiedGoodss:
+          type: array
+          default: []
+          items:
+            $ref: '#/components/schemas/NotifiedGoods'
+        calloffs:
+          type: array
+          default: []
+          items:
+            $ref: '#/components/schemas/Calloff'
+        uploadedFiles:
+          type: array
+          default: []
+          items:
+            $ref: '#/components/schemas/UploadedFile'
+        services:
+          type: array
+          default: []
+          items:
+            $ref: '#/components/schemas/Service'
+      required:
+        - customerNumber
+        - customerReference
+        - details
+        - goodss
+    Detail:
+      type: object
+      properties:
+        type:
+          type: string
+          example: SENDER
+          description: >-
+           Every shipment necessitates a minimum of two detail objects: one designated as the SENDER and the other as the RECEIVER. Nevertheless, if required, it is also possible to include multiple Senders and/or multiple Receivers within a single shipment. The Sender is also utilized for pickups, while the Receiver is utilized for deliveries. 
+        instructions:
+          type: string
+        address:
+          type: object
+          allOf:
+            - $ref: '#/components/schemas/AddressObject'
+        dateType:
+          type: integer
+          example: 1
+          description: >-
+            0=default, 1=FromTo, 2=From, 3=To, 4=Fix, 5=None
+        dateFrom:
+          type: string
+          example: 12.06.2023 10:00
+          description: >-
+            The parameters 'dateFrom' and 'dateTo' specify the time frame during which the goods are scheduled to be picked up and/or delivered.
+        dateTo:
+          type: string
+          example: 12.06.2023 15:00
+        dateFrom2:
+          type: string
+          example: dd.MM.yyyy HH.mm
+        dateTo2:
+          type: string
+          example: dd.MM.yyyy HH.mm
+        fixedTime:
+          type: boolean
+          example: false
+        notification:
+          type: boolean
+          example: false
+      required:
+        - type
+        - address
+    UploadedFile:
+      type: object
+      properties:
+        fileName:
+          type: string
+          example: deliveryNote001.pdf
+          description: >-
+            Name of the uploaded file
+        fileContent:
+          type: string
+          description: >-
+            A String containing a Base64 encoded file
+            byte[] input_file = new byte[0];
+            input_file = Files.readAllBytes(Paths.get(file.getAbsolutePath()));
+            encodedBytes = Base64.getEncoder().encode(input_file);
+            String encodedString = new String(encodedBytes);
+        fileSize:
+          type: string
+          example: deliveryNote001.pdf
+          description: >-
+            Size in KB of the uploaded file
+        temporary:
+          type: boolean
+          example: false
+          default: false
+          description: Internal field
+        createdBy:
+          type: string
+        createdOn:
+          type: string
+          description: >- 
+            date in the format dd.MM.yyyy HH:mm
+          example: 12.06.2023 15:00
+        modifiedBy:
+          type: string
+        modifiedOn:
+          type: string
+          description: >- 
+            date in the format dd.MM.yyyy HH:mm
+          example: 12.06.2023 15:00
+        deleted:
+          type: boolean
+          default: false
+          description: Internal field
+    NotifiedGoods:
+      type: object
+      properties:
+        pos:
+          type: integer
+          example: 1
+          description: When entering a new goods item into the goods array, make sure to start with position 1 for the first item and add 1 to the position of the previous item for each subsequent item
+        articleNumber:
+          type: string
+          description: Provide a concise Article Number of the notified goods.
+        articleName:
+          type: string
+          description: Provide a concise Article Name of the notified goods.
+        description:
+          type: string
+          description: Provide a description for the notified goods item.
+        serialNumber:
+          type: string
+          description: Provide a barcode for the notified goods item.
+        lotNumber:
+          type: string
+          description: Provide a lot number for the notified goods item.
+        unit:
+          type: string
+          example: Europalette, Euro pallet, StÃ¼ck, Colli, Box
+          description: >-
+            Enter the name of the packaging used for the for the notified goods item. If the unit does not exist in the Logistiqo system, it will be created.
+        pieces:
+          type: integer
+          default: 1
+          example: 4
+        weight:
+          type: number
+          format: double
+          example: 12.5
+          default: 0.0
+          description: >-
+            When entering the total weight of the goods item, use kilograms as the unit of measurement and a dot as the decimal separator.
+        volume:
+          type: number
+          format: double
+          example: 1.2
+          default: 0.0
+          description: >-
+            When entering the total volume of the goods item, use kilograms as the unit of measurement and a dot as the decimal separator.
+        length:
+          type: integer
+          example: 80
+          default: 0
+          description: >-
+            When entering the length of the goods item, use centimeters (cm) as the unit of measurement.
+        width:
+          type: integer
+          example: 70
+          default: 0
+          description: >-
+            When entering the width of the goods item, use centimeters (cm) as the unit of measurement.
+        height:
+          type: integer
+          example: 100
+          default: 0
+          description: >-
+            When entering the height of the goods item, use centimeters (cm) as the unit of measurement.
+        importId:
+          type: string
+          example: '12345678'
+          description: >-
+            The importId is only required if you intend to change goods items through the API. It is used to find the correct goods item. If no item is found, a new item will be created.
+    Goods:
+      type: object
+      properties:
+        pos:
+          type: integer
+          example: 1
+          description: >-
+            When entering a new goods item into the goods array, make sure to start with position 1 for the first item and add 1 to the position of the previous item for each subsequent item
+        name:
+          type: string
+          description: >-
+            Provide a name of the goods.
+        description:
+          type: string
+          description: >-
+            Provide a description of the goods.
+        articleName:
+          type: string
+          description: >
+            Please provide the name of the article. This field is exclusively utilized in warehousing to monitor the stock balance for each individual item.
+        articleNumber:
+          type: string
+          description: >-
+            Please provide the number of the article. This field is exclusively utilized in warehousing to monitor the stock balance for each individual item.
+        reference:
+          type: string
+          description: >-
+            Provide a reference of the goods.
+        constructionIndex:
+          type: string
+          description: >-
+            This field exclusively pertains to VDA and warehouse monitoring purposes.
+        serialNumber:
+          type: string
+          description: >-
+            This field exclusively pertains to warehouse monitoring purposes.
+        loadCarrier:
+          type: string
+          description: >-
+            This field exclusively pertains to warehouse monitoring purposes.
+        lotNumber:
+          type: string
+          description: >-
+            This field exclusively pertains to warehouse monitoring purposes.
+        warehouseSlot:
+          type: string
+          description: >-
+            This field exclusively pertains to warehouse monitoring purposes.
+        unit:
+          type: string
+          example: Europalette, Euro pallet, StÃ¼ck, Colli, Box
+          description: >-
+            Enter the name of the packaging used for the goods.If the unit does not exist in the Logistiqo system, it will be created.
+        pieces:
+          type: integer
+          example: 4
+        weight:
+          type: number
+          format: double
+          example: '12.5'
+          description: >-
+            When entering the total weight of the goods item, use kilograms as the unit of measurement and a dot as the decimal separator.
+        volume:
+          type: number
+          format: double
+          example: 1.2
+          description: >-
+            When entering the total volume of the goods item, use kilograms as the unit of measurement and a dot as the decimal separator.
+        ldm:
+          type: number
+          format: double
+          example: 5.2 
+        length:
+          type: integer
+          example: 80
+          description: >-
+            Please enter the length of the goods item using centimeters (cm) as the unit of measurement. If you need to use a different unit of measurement, you can define it in the Logistiqo application. For further assistance, please reach out to our support team.
+        width:
+          type: integer
+          example: 70
+          description: >-
+            When entering the width of the goods item, use centimeters (cm) as the unit of measurement. If you need to use a different unit of measurement, you can define it in the Logistiqo application. For further assistance, please reach out to our support team.
+        height:
+          type: integer
+          example: 100
+          description: >-
+            When entering the height of the goods item, use centimeters (cm) as the unit of measurement. If you need to use a different unit of measurement, you can define it in the Logistiqo application. For further assistance, please reach out to our support team.
+        setpoint:
+          type: boolean
+          example: true
+          default: false
+          description: >-
+            This indicates whether the goods item requires a setpoint temperature or not.
+        codAmount:
+          type: number
+          format: double
+          default: 0.0
+        goodsValue:
+          type: number
+          format: double
+          default: 0.0
+        supplier:
+          type: string
+        largeLoadCarriers:
+          type: integer
+          default: 0
+        smallLoadCarriers:
+           type: integer
+           default: 0
+        temperatureRange:
+          type: string
+          description: >-
+            This field corresponds to the TemperatureRange table in the Logistiqo application. If a temperature range is entered that is not available in Logistiqo, it will be created. However, please note that the actual range must be manually entered in Logistiqo afterwards.
+          example: TC02
+        maxTemp:  
+          type: number
+          format: double
+        minTemp:  
+          type: number
+          format: double
+        xray:
+          type: boolean
+          default: false
+          description: >-
+            This field indicates that the described goods must undergo screening.
+        stackable:
+          type: boolean
+          default: false
+          description: >-
+            This field indicates that the described goods are stackable in both the warehouse and during transport.
+        shockwatch:
+          type: boolean
+          default: false
+          description: >-
+            This field indicates that the described goods must be monitored with a shockwatch device.
+        addPieces:
+           type: integer
+           default: 0
+           description: >-
+            Internal field
+        receiptId:
+           type: integer
+           default: 0
+           description: >-
+            Internal field
+        importId:
+          type: string
+          example: '12345678'
+          description: >-
+            The importId is only required if you intend to change goods items through the API. It is used to find the correct goods item. If no item is found, a new item will be created.
+    Calloff:
+      type: object
+      properties:
+        callOffDate:
+          type: string
+          example: yyMMdd
+          description: >-
+            When entering a new goods item into the goods array, make sure to start with position 1 for the first item and add 1 to the position of the previous item for each subsequent item
+        quantity:
+          type: integer
+          description: >-
+            Provide a call-off quantity of the goods.
+        description:
+          type: string
+          description: >-
+            Provide a reference of the goods.
+    Service:
+      type: object
+      properties:
+        pos:
+          type: integer
+          example: 1
+          description: >-
+            When entering a new sevice item into the sevice array, make sure to start with position 1 for the first item and add 1 to the position of the previous item for each subsequent item
+        name:
+          type: string
+          description: >-
+            Please provide a name of the service. If a service with the same name is not found in the Logistiqo application, it will be created.
+        reference:
+          type: string
+          description: >-
+            Provide a reference of the service.
+        netAmount:
+          type: number
+          format: double
+          example: 0
+        netCost:
+          type: number
+          format: double
+          example: 0
+        subcontractor:
+          type: object
+          allOf:
+          - $ref: '#/components/schemas/CompanyObject'
+        importId:
+          type: string
+          example: '12345678'
+          description: >-
+            The importId is only required if you intend to change goods items through the API. It is used to find the correct goods item. If no item is found, a new item will be created.
+    Status:
+      type: object
+      properties:
+        reference:
+          type: string
+          example: '541641'
+          description: :>-
+            This unique identification is essential to ensure that the transaction is not mistakenly imported more than once. By using this identifier, we can accurately track and manage the transaction, preventing any errors or discrepancies that could arise from duplicate imports. Please ensure that this unique identifier is included in the transaction. In case of a get method the id of the transaction is shown in this field.
+        idShipment:
+          type: integer
+          example: '61664'
+          description: :>-
+            Only if the id of the shipment is known 
+        shipmentNumber:
+          type: string
+          example: '23 00050'
+          description: :>-
+            To ensure proper identification of a shipment, it is necessary to use either the idShipment, the shipment number, or a unique customer reference. Using any of these identifiers will allow for accurate and efficient tracking and management of the shipment. Please ensure that one of these identifiers is included.
+        customerReference:
+          type: string
+          example: '07049162454161'
+          description: :>-
+            To ensure proper identification of a shipment, it is necessary to use either the idShipment, the shipment number, or a unique customer reference. Using any of these identifiers will allow for accurate and efficient tracking and management of the shipment. Please ensure that one of these identifiers is included.
+        statusId:
+          type: integer
+          example: 1
+          description: :>-
+            Only used by Logtistiqo
+        status:
+          type: string
+          example: 'POD'
+          description: :>-
+            Possible values NONASSIGNED, ASSIGNED, STOPOVER, ACCEPTED, ATGATECOLLECT, COLLECTED, DEPOT, DELIVERY, ATGATEDELIVERY, DELIVERED, POD, QUOTE, QUOTEACCEPTED, CANCELED, PROBLEM, XRAY, LABELED, PARTIN, PARTOUT
+        statusDescription:
+          type: string
+          example: 'At Gate Pickup'
+          description: :>-
+            Translated status
+        description:
+          type: string
+          example: 'Freight papers are missing'
+          description: :>-
+            A free textfield indicating a further description of the status change, 
+            i.e in case of a problem the description of the problem
+        user:
+          type: string
+          example: 'r.sterling@universalexport.net'
+          description: :>-
+            Name, Email or Phone number of the user who changed the status
+        timeStamp:
+          type: string
+          example: '23-03-2023 19:01'
+          description: :>-
+            Time of the status change, Use Dateformat 'dd.MM.yyyy HH:mm'
+        lat:
+          type: number
+          minimum: -90
+          maximum: 90
+        lng:
+          type: number
+          minimum: -180
+          maximum: 180
+    Barcode:
+      type: object
+      properties:
+        id:
+          type: integer
+        barcode:
+          type: string
+        customerref:
+          type: string
+        manifestref:
+          type: string
+        reference:
+          type: string
+        storage:
+          type: string
+        loadcarrier:
+          type: string
+        constructionindex:
+          type: string
+        serialnumber:
+          type: string
+        quantity:
+          type: integer
+        slc:
+          type: integer
+        llc:
+          type: integer
+        qpu:
+          type: integer
+        unit:
+          type: string
+        action:
+          type: string
+        barcodetype:
+          type: string
+        createnew:
+          type: boolean
+        deleted:
+          type: boolean
+        complete:
+          type: boolean
+        changestatus:
+          type: boolean
+        scannedby:
+          type: string
+        scannedinon:
+          type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    BasicAuth:
+      type: http
+      scheme: basic
+security:
+  - BasicAuth: []
+  - ApiKeyAuth: []
+
